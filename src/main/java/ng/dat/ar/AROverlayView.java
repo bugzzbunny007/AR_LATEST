@@ -13,6 +13,8 @@ import android.location.Location;
 import android.opengl.Matrix;
 
 import android.view.View;
+import android.widget.Toast;
+
 import ng.dat.ar.Common;
 
 
@@ -84,16 +86,15 @@ public class AROverlayView extends View {
 
 
 
-
-
             //end dcb
-            if (cameraCoordinateVector[2] < 0) {
-                float x  = (0.5f + cameraCoordinateVector[0]/cameraCoordinateVector[3]) * canvas.getWidth();
-                float y = (0.5f - cameraCoordinateVector[1]/cameraCoordinateVector[3]) * canvas.getHeight();
+                if (cameraCoordinateVector[2] < 0) {
+                    float x = (0.5f + cameraCoordinateVector[0] / cameraCoordinateVector[3]) * canvas.getWidth();
+                    float y = (0.5f - cameraCoordinateVector[1] / cameraCoordinateVector[3]) * canvas.getHeight();
 
-                canvas.drawCircle(x, y, radius, paint1);
-                canvas.drawText(Common.arPoints.get(i).getName(), x - (30 * Common.arPoints.get(i).getName().length() / 2), y - 80, paint);
-            }
+                    canvas.drawCircle(x, y, radius, paint1);
+                    canvas.drawText(Common.arPoints.get(i).getName(), x - (30 * Common.arPoints.get(i).getName().length() / 2), y - 80, paint);
+                }
+
         }
     }
 }

@@ -63,6 +63,7 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     private LocationManager locationManager;
     public Location location;
     boolean isGPSEnabled;
+    public static double checkdraw;
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
     private float declination;
@@ -114,8 +115,12 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
                     final double  lng =Double.valueOf(dataSnapshotchild.child("lng").getValue().toString());
                     final double  alt =Double.valueOf(dataSnapshotchild.child("alt").getValue().toString());
 
-                    Common.arPoints.add(new ARPoint(name,alt,lat,lng));
 
+                    checkdraw=distance(location.getLatitude(),location.getLongitude(),lat,lng);
+
+                    if(checkdraw<=50) {
+                        Common.arPoints.add(new ARPoint(name, alt, lat, lng));
+                    }
                 }
             }
 
@@ -309,6 +314,28 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             tvCurrentLocation.setText(String.format("lat: %s \nlon: %s \naltitude: %s \n",
                     location.getLatitude(), location.getLongitude(), location.getAltitude()));
         }
+    }
+
+
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1))
+                * Math.sin(deg2rad(lat2))
+                + Math.cos(deg2rad(lat1))
+                * Math.cos(deg2rad(lat2))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
     }
 
     @Override
