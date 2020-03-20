@@ -13,16 +13,10 @@ import android.location.Location;
 import android.opengl.Matrix;
 
 import android.view.View;
-import android.widget.Toast;
-
-import ng.dat.ar.Common;
 
 
 import ng.dat.ar.helper.LocationHelper;
 
-/**
- * Created by ntdat on 1/13/17.
- */
 
 public class AROverlayView extends View {
 
@@ -64,11 +58,13 @@ public class AROverlayView extends View {
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         paint.setTextSize(60);
 
+
         Paint paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint1.setStyle(Paint.Style.FILL);
         paint1.setColor(Color.BLUE);
         paint1.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         paint1.setTextSize(60);
+
 
         for (int i = 0; i < Common.arPoints.size(); i ++) {
             float[] currentLocationInECEF = LocationHelper.WSG84toECEF(currentLocation);
@@ -81,18 +77,15 @@ public class AROverlayView extends View {
             // cameraCoordinateVector[2] is z, that always less than 0 to display on right position
             // if z > 0, the point will display on the opposite
 
-            //drawing check bunny
-
-
-
-
-            //end dcb
                 if (cameraCoordinateVector[2] < 0) {
                     float x = (0.5f + cameraCoordinateVector[0] / cameraCoordinateVector[3]) * canvas.getWidth();
                     float y = (0.5f - cameraCoordinateVector[1] / cameraCoordinateVector[3]) * canvas.getHeight();
 
                     canvas.drawCircle(x, y, radius, paint1);
                     canvas.drawText(Common.arPoints.get(i).getName(), x - (30 * Common.arPoints.get(i).getName().length() / 2), y - 80, paint);
+
+
+
                 }
 
         }
