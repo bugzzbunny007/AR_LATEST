@@ -9,7 +9,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -26,13 +25,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +40,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import ng.dat.ar.model.ARPoint;
 
@@ -85,9 +79,11 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
     public static double checkdraw;
     boolean isNetworkEnabled;
     boolean locationServiceAvailable;
+    public static double bunnyLat;
+    public static double bunnylng;
+    public static double bunnyAlt;
+
     private float declination;
-    private View main;
-    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,12 +126,16 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         Intent intent = new Intent(Intent.ACTION_VIEW);
         Uri uri = Uri.fromFile(fileScreenshot);
         intent.setDataAndType(uri,"image/jpeg");
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(intent);
+
+    }
+    public void ReportScreen(View view){
+        Intent intent = new Intent(ARActivity.this,Report_drone.class);
+        startActivity(intent);
     }
 
 
@@ -207,6 +207,10 @@ public class ARActivity extends AppCompatActivity implements SensorEventListener
             this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSIONS_CODE);
         } else {
             initLocationService();
+
+            bunnyLat =location.getLatitude();
+            bunnylng =location.getLongitude();
+            bunnyAlt =location.getAltitude();
         }
     }
 

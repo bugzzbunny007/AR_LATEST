@@ -15,7 +15,7 @@
             android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnreport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
@@ -23,8 +23,18 @@
             android:layout_marginTop="400dp"
             android:fadeScrollbars="true"
             android:onClick="ScreenshotButton"
-            android:text="Report Drone"
+            android:text="take picture"
             tools:text="@string/screenshot" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="600dp"
+            android:fadeScrollbars="true"
+            android:onClick="ReportScreen"
+            android:text="Button" />
+
 
     </FrameLayout>
 

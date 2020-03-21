@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AR Location-based</string>
     <string name="screenshot">screenshot</string>
+    <string name="chooseFile">ChooseFile</string>
+    <string name="UploadFile">upload</string>
+    <string name="FileComplaint">filecomplaint</string>
 </resources>

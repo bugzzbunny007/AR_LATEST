@@ -25,6 +25,7 @@ public class AROverlayView extends View {
     private Location currentLocation;
 
 
+
     public AROverlayView(Context context) {
         super(context);
 

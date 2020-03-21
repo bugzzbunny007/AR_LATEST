@@ -18,6 +18,7 @@ public class ARPoint {
 
     public ARPoint(String name, Double alt, Double lat, Double lng) {
         this.name = name;
+
         location = new Location("ARPoint");
         location.setLatitude(lat);
         location.setLongitude(lng);
