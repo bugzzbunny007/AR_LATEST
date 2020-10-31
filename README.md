@@ -1,4 +1,4 @@
-Augmented Reality Project
+<b>Augmented Reality Project<b>
 Augmeted Reality and Drone are the hot technologies Nowadays and In the Future These Technologies will play the  Major part in our life. Our solution will use These Technologies and Provide Security To each and every Individual Because If anyone Sees Drone Flying around his House So he should know why That drone is here and what it is  doing.Our product shows the Licence Number of piolet and the Organisation of the drone and the Purpose why it is flying in that air space and If there is any Rogue drone or If he Finds Something Suspecious With the Drone He can Report It as well.
 AR Location-based for Android
 
